@@ -28,6 +28,10 @@ provider:
 
 
 
+custom :
+  s3Sync:
+      - bucketName: myserverlessprojectupload12
+        localDir: uploadData
 # you can overwrite defaults here
 # stage: dev
 # region: us-east-1
