@@ -30,7 +30,7 @@ plugins:
 
 custom :
   s3Sync:
-      - BucketName: myserverlessprojectupload12
+      - bucketName: myserverlessprojectupload12
         localDir: uploadData
 # you can overwrite defaults here
 # stage: dev
