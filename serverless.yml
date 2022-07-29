@@ -25,13 +25,9 @@ provider:
   runtime: nodejs12.x
   profile: serverlessProfile
 
-plugins:
-  - serverless-s3-sync 
 
-custom :
-  s3Sync:
-      - BucketName: myserverlessprojectupload12
-        localDir: uploadData
+
+
 # you can overwrite defaults here
 # stage: dev
 # region: us-east-1
@@ -67,8 +63,13 @@ custom :
 #    - include-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  getUser:
+    handler: lambdas/getUser.handler
+    events :
+      - http : 
+          path: get-user/{ID} 
+          method: get
+          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -110,13 +111,7 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-resources:
- Resources:
-    demobucketupload:
-#    NewResource:
-       Type: AWS::S3::Bucket
-       Properties:
-           BucketName: myserverlessprojectupload12
+
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
